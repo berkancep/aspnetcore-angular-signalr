@@ -1,0 +1,24 @@
+<div id="main-container" style="text-align:center">
+
+
+    <div class="container mt-4 bg-light">
+        <h2>Hello SignalR Project</h2>
+        <form (ngSubmit)="sendMessage()" #chatForm="ngForm">
+            <div class="form-group"><label for="message">Message</label>
+                <input class="form-control" type="text" id="message" name="message" [(ngModel)]="message" required>
+            </div>
+
+            <button class="btn btn-success btn-raised" type="submit" id="sendmessage"
+                [disabled]="!chatForm.valid">
+                Send Message
+            </button>
+        </form>
+    </div>
+
+    <div class="container mt-3 bg-primary text-white" *ngIf="signalRService.messages.length > 0">
+        <div *ngFor="let message of signalRService.messages">
+            <span>{{message}}</span>
+        </div>
+    </div>
+
+</div>
